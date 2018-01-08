@@ -25,17 +25,24 @@ export function bookings(input) {
     console.log(input)
     return (dispatch) => {
         APIServices.post(ApiUrl.booking(), input).then((response) => {
-            console.log(response);
-            return response.json();
+            if(response.status < 400){
+                dispatch({
+                    type: ActionTypes.APP_BOOKINGS_SUCCESS,
+                    bookingData: null
+                })
+            }else{
+                dispatch({
+                    type: ActionTypes.APP_BOOKINGS_ERROR,
+                    bookingData: null
+                })
+            }
+           // return response.json();
         }).then((responseJson) => {
-            dispatch({
-                type: ActionTypes.APP_BOOKINGS_SUCCESS,
-                bookingData: responseJson
-            })
+           console.log(responseJson);
         }).catch((error) => {
             console.log(error);
             dispatch({
-                type: ActionTypes.APP_BOOKINGS_SUCCESS,
+                type: ActionTypes.APP_BOOKINGS_ERROR,
                 bookingData: null
             })
         })

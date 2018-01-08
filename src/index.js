@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Actions from './actions';
 import Home from "./layouts/home";
+import SplashScreen from "./layouts/SplashScreen/splashScreen";
 import * as image from './images'
 import AlertNotification from './components/AlertNotification/AlertNotification'
 import { Root } from "native-base";
@@ -76,7 +77,7 @@ class App extends Component {
                            titleColor={this.props.state.ntfType != null ? '#373737' : '#FF7167'}/>);
 
                     return ( <View style={{flex: 1}}>
-                        <StatusBarCustom backgroundColor="#1F5F1F" barStyle="light-content"/>
+                        <StatusBarCustom backgroundColor='#1F5F1F' barStyle="light-content"/>
                         <Home/>
                         {objLoading != null ? objLoading : null}
                         {alertNotification}
